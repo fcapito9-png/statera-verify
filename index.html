@@ -1,9 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="refresh" content="0; url=chart.html">
-  </head>
-  <body style="background:#020617;color:#e5e7eb;text-align:center;padding-top:40px;">
-    Redirecting to chart...
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statera (STA) — Official Live Chart</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
+      color: #e5e5e5;
+      background: radial-gradient(circle at top, #1a1a1a 0%, #000 90%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0 4px 0;
+      color: #f1c27d;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin: 0 0 24px 0;
+      opacity: 0.8;
+    }
+
+    button {
+      background: linear-gradient(90deg, #c3914b, #f6c65b);
+      color: #000;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #f6c65b, #c3914b);
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #c3914b;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px #c3914b80;
+    }
+
+    /* === Modal === */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      width: 90%;
+      max-width: 1100px;
+      height: 80%;
+      background: #0a0a0a;
+      border: 1px solid #c3914b44;
+      border-radius: 12px;
+      box-shadow: 0 0 24px rgba(195, 145, 75, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      color: #f1c27d;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #fff;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    a {
+      color: #f1c27d;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <img
+    src="https://ipfs.io/ipfs/bafybeienbwutoeocqixyxut5owu4gjmamayvsj2rulwnef33hb3wq332xy"
+    alt="Statera Logo"
+    class="logo"
+  />
+  <h1>Statera (STA)</h1>
+  <p>Official STA/SOL Live Market Chart</p>
+  <button id="openChart">📊 Abrir Gráfico</button>
+
+  <!-- Modal -->
+  <div id="chartModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <iframe
+        src="chart.html"
+        title="STA/SOL Live Chart"
+        allow="clipboard-write"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>View full token verification at <a href="https://stateracoin.com">stateracoin.com</a></p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("chartModal");
+    const openBtn = document.getElementById("openChart");
+    const closeBtn = document.getElementById("closeModal");
+
+    openBtn.onclick = () => (modal.style.display = "flex");
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+</body>
 </html>
